@@ -1,4 +1,4 @@
-# This the typescript-version so use typescript only
+### note :- this is typescript version
 
 <p align="center"></p>
 

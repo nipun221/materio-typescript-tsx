@@ -3,8 +3,12 @@ import { useRouter } from 'next/router';
 
 const Response = () => {
   const router = useRouter();
-  const myData = JSON.parse(router.query.myData || '[]'); // Parse the query parameter as JSON, default to an empty array
-  console.log("mydata: ", myData);
+  const myData = Array.isArray(router.query.myData)
+  ? router.query.myData.join(',') // Convert the array to a comma-separated string or choose your delimiter
+  : router.query.myData || '[]';   //Type error: Argument of type 'string | string[]' is not assignable to parameter of type 'string'.Type 'string[]' is not assignable to type 'string'.
+
+  const parsedData = JSON.parse(myData); // Parse the query parameter as JSON, default to an empty array
+  console.log("parsedData: ", parsedData);
 
   return (
     <div>
@@ -12,14 +16,14 @@ const Response = () => {
       <ul>
         <li style={styles.listItem}>
           <div style={styles.userInfo}>
-            <strong>Username:</strong> {myData.username}<br />
-            <strong>Email:</strong> {myData.email}<br />
-            <strong>First Name:</strong> {myData.firstName}<br />
-            <strong>Last Name:</strong> {myData.lastName}<br />
-            <strong>Gender:</strong> {myData.gender}<br />
+            <strong>Username:</strong> {parsedData.username}<br />
+            <strong>Email:</strong> {parsedData.email}<br />
+            <strong>First Name:</strong> {parsedData.firstName}<br />
+            <strong>Last Name:</strong> {parsedData.lastName}<br />
+            <strong>Gender:</strong> {parsedData.gender}<br />
           </div>
           <div style={styles.userImage}>
-            <img src={myData.image} alt={`Profile of ${myData.username}`} style={styles.image} />
+            <img src={parsedData.image} alt={`Profile of ${parsedData.username}`} style={styles.image} />
           </div>
         </li>
       

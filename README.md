@@ -1,5 +1,3 @@
-### note :- this is typescript version
-
 <p align="center"></p>
 
 <p align="center">
@@ -13,6 +11,8 @@
       Materio - Free MUI React NextJS Admin Template
    </a>
 </h1>
+
+<p align="center">Note :- This is typescript version. Hence, follow the typescript procedure only</p>
 
 <p align="center">Most Powerful & Comprehensive Free MUI React NextJS Admin Dashboard Template built for developers!
 
